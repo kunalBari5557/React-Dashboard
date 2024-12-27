@@ -7,14 +7,6 @@ type Feedback = {
     avatar: string;
 };
 
-type Order = {
-    customer: string;
-    orderNo: string;
-    amount: string;
-    status: "Delivered" | "Pending" | "Cancelled";
-    avatar: string;
-};
-
 const RecentOrders: React.FC = () => {
     const feedbackData: Feedback[] = [
         {

@@ -1,5 +1,5 @@
 import { LogOut } from "lucide-react";
-import React, { createContext, useContext, useState, ReactNode, ReactElement } from "react";
+import { createContext, useContext, useState, ReactNode, ReactElement } from "react";
 
 // Define the context type
 interface SidebarContextType {
@@ -16,7 +16,7 @@ interface SidebarProps {
 
 // Sidebar component
 export default function Sidebar({ children }: SidebarProps): ReactElement {
-    const [expanded, setExpanded] = useState<boolean>(false);
+    const [expanded] = useState<boolean>(false);
 
     return (
         <aside className="h-screen">

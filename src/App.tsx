@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   useNavigate,
-  BrowserRouter as Router,
   Route,
   Routes,
   useLocation,

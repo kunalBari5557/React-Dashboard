@@ -73,7 +73,7 @@ const NetProfitChart: React.FC<{ value: number }> = ({ value }) => {
                         transformOrigin: "center",
                         width: "80%",
                         height: "50%",
-                        marginBottom: "10px", // Add spacing between value and text
+                        marginBottom: "10px",
                     }}
                 >
                     <CircularProgressbar
@@ -87,26 +87,23 @@ const NetProfitChart: React.FC<{ value: number }> = ({ value }) => {
                         })}
                     />
                 </div>
-                {/* <p className="text-sm font-bold text-gray-300 mt-2 text-center">
-                    Goal<br />Completed
-                </p> */}
             </div>
             <span className="text-xs text-gray-400 mt-2">
-                *The values here have.
+                *Today average.
             </span>
         </>
     );
 };
 
-
 const SquareComponent: React.FC = () => {
     return (
-        <>
+        <div className="p-4">
             <h2 className="text-xl font-bold mb-4 text-customGray">Dashboard</h2>
 
-            <div className="flex gap-6">
-                <div className="w-[80%]">
-                    <div className="flex flex-wrap gap-4">
+            <div className="flex flex-col lg:flex-row gap-6">
+                {/* Stats Cards Section */}
+                <div className="flex-1">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                         {data.map(
                             ({
                                 title,
@@ -128,7 +125,7 @@ const SquareComponent: React.FC = () => {
                                 return (
                                     <div
                                         key={id}
-                                        className="w-[23.4%] h-[180px] bg-[#202028] flex flex-col justify-between rounded-md text-white p-4"
+                                        className="bg-[#202028] flex flex-col justify-between rounded-md text-white p-4"
                                     >
                                         <div className="flex flex-col items-start">
                                             <div
@@ -143,7 +140,7 @@ const SquareComponent: React.FC = () => {
                                             <p className="text-sm font-semibold">{title}</p>
                                         </div>
 
-                                        <div className="flex justify-between items-center">
+                                        <div className="flex justify-between items-center mt-2">
                                             <p className="text-2xl font-semibold">{value}</p>
 
                                             <div className="flex items-center">
@@ -165,26 +162,34 @@ const SquareComponent: React.FC = () => {
                     </div>
                 </div>
 
-                <div className="w-[30.3%] bg-[#202028] flex items-center justify-between rounded-md text-white p-4">
+                {/* Net Profit Section */}
+                {/* Net Profit Section */}
+                {/* Net Profit Section */}
+                <div className="lg:w-[30%] w-full bg-[#202028] flex items-center justify-between rounded-md text-white p-4 relative">
                     <div>
                         <p className="text-sm font-semibold">Net Profit</p>
                         <p className="text-4xl font-semibold mt-2">$6759.25</p>
-                        <p className="text-lg mt-1 text-[#00C78B] font-semibold">
-                            ▲ 6%
-                        </p>
+                        <p className="text-lg mt-1 text-[#00C78B] font-semibold">▲ 6%</p>
                     </div>
 
-                    <div className="ml-4">
+                    <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
                         <NetProfitChart value={70} />
                     </div>
                 </div>
+
+
             </div>
 
-            <br />
-            <ActivityChart />
-            <br />
-            <RecentOrders />
-        </>
+            {/* Charts */}
+            <div className="mt-6">
+                <ActivityChart />
+            </div>
+
+            {/* Recent Orders */}
+            <div className="mt-6">
+                <RecentOrders />
+            </div>
+        </div>
     );
 };
 

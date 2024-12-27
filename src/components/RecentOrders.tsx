@@ -48,7 +48,6 @@ const RecentOrders: React.FC = () => {
 
     const [visibleFeedback, setVisibleFeedback] = useState<number>(3);
 
-    // Function to load more feedback on scroll
     const handleScroll = (e: React.UIEvent<HTMLDivElement>): void => {
         const container = e.target as HTMLDivElement;
         if (
@@ -66,19 +65,16 @@ const RecentOrders: React.FC = () => {
         }
         return () => {
             if (feedbackContainer) {
-                feedbackContainer.removeEventListener(
-                    "scroll",
-                    handleScroll as any
-                );
+                feedbackContainer.removeEventListener("scroll", handleScroll as any);
             }
         };
     }, []);
 
     return (
-        <div className="flex gap-6">
+        <div className="flex flex-wrap lg:flex-nowrap gap-6">
             {/* Recent Orders Section */}
-            <div className="w-[72%] bg-[#202028] p-4 text-white">
-                <h2 className="text-xl font-bold mb-4">Recent Orders</h2>
+            <div className="w-full lg:w-[70%] bg-[#202028] p-4 text-white rounded-lg">
+                <h2 className="text-lg sm:text-xl font-bold mb-4">Recent Orders</h2>
                 <div className="overflow-x-auto">
                     <table className="table-auto w-full text-left">
                         <thead>
@@ -102,7 +98,7 @@ const RecentOrders: React.FC = () => {
                                     customer: "Jane Cooper",
                                     orderNo: "48965786",
                                     amount: "$365.02",
-                                    status: "Delivered",
+                                    status: "Pending",
                                     avatar: "https://i.pravatar.cc/150?img=2",
                                 },
                                 {
@@ -130,36 +126,34 @@ const RecentOrders: React.FC = () => {
                                     customer: "Savannah Nguyen",
                                     orderNo: "78514568",
                                     amount: "$128.20",
-                                    status: "Delivered",
+                                    status: "Cancelled",
                                     avatar: "https://i.pravatar.cc/150?img=6",
                                 },
-                            ].map((order: any, index: number) => (
-                                <>
-                                    <tr key={index} className="border-b border-gray-700">
-                                        <td className="px-4 py-6 flex items-center space-x-3">
-                                            <img
-                                                src={order.avatar}
-                                                alt={`${order.customer}'s Avatar`}
-                                                className="h-8 w-8 rounded-full"
-                                            />
-                                            <span>{order.customer}</span>
-                                        </td>
-                                        <td className="px-6 py-6">{order.orderNo}</td>
-                                        <td className="px-6 py-6">{order.amount}</td>
-                                        <td className="px-6 py-6 flex justify-center">
-                                            <span
-                                                className={`px-3 py-1 rounded-full text-sm font-bold w-[120px] text-center ${order.status === "Delivered"
-                                                    ? "text-[#0F6E56] bg-[#175246]"
+                            ].map((order, index) => (
+                                <tr key={index} className="border-b border-gray-700">
+                                    <td className="px-4 py-6 flex items-center space-x-3">
+                                        <img
+                                            src={order.avatar}
+                                            alt={`${order.customer}'s Avatar`}
+                                            className="h-8 w-8 rounded-full"
+                                        />
+                                        <span>{order.customer}</span>
+                                    </td>
+                                    <td className="px-6 py-6">{order.orderNo}</td>
+                                    <td className="px-6 py-6">{order.amount}</td>
+                                    <td className="px-6 py-6 flex justify-center">
+                                        <span
+                                            className={`px-3 py-1 rounded-full text-sm font-bold w-[120px] text-center ${order.status === "Delivered"
+                                                    ? "text-[#0D926C] bg-[#175246]"
                                                     : order.status === "Pending"
-                                                        ? "text-yellow-600 bg-yellow-500"
-                                                        : "text-[#A0484B] bg-[#5D3336]"
-                                                    }`}
-                                            >
-                                                {order.status}
-                                            </span>
-                                        </td>
-                                    </tr>
-                                </>
+                                                        ? "text-[#8B4240] bg-[#5D343A]"
+                                                        : "text-red-600 bg-red-100"
+                                                }`}
+                                        >
+                                            {order.status}
+                                        </span>
+                                    </td>
+                                </tr>
                             ))}
                         </tbody>
                     </table>
@@ -167,26 +161,22 @@ const RecentOrders: React.FC = () => {
             </div>
 
             {/* Customer Feedback Section */}
-            <div className="w-[28%] bg-[#202028] p-6 text-white ml-4 rounded-md shadow-lg">
-                <h2 className="text-2xl font-bold mb-4 border-b border-gray-700 pb-2">
+            <div className="w-full lg:w-[30%] bg-[#202028] p-6 text-white rounded-lg shadow-lg">
+                <h2 className="text-lg sm:text-xl font-bold mb-4 border-b border-gray-700 pb-2">
                     Customer's Feedback
                 </h2>
                 <div
                     id="feedback-container"
                     className="space-y-6 overflow-y-auto pr-2 custom-scrollbar"
                     style={{
-                        height: "auto",
                         maxHeight: "calc(100vh - 200px)",
                     }}
-                    onScroll={handleScroll}
                 >
                     {feedbackData.slice(0, visibleFeedback).map((feedback, index) => (
                         <div
                             key={index}
                             className="border-b border-gray-700 pb-4"
-                            style={{
-                                minHeight: "8rem",
-                            }}
+                            style={{ minHeight: "8rem" }}
                         >
                             <div className="flex items-center space-x-3">
                                 <img
@@ -194,14 +184,18 @@ const RecentOrders: React.FC = () => {
                                     alt={`${feedback.name}'s Avatar`}
                                     className="h-12 w-12 rounded-full"
                                 />
-                                <h3 className="font-semibold text-lg">{feedback.name}</h3>
+                                <h3 className="font-semibold text-sm sm:text-lg">
+                                    {feedback.name}
+                                </h3>
                             </div>
                             <p className="text-sm mt-2 text-gray-300">{feedback.feedback}</p>
                             <div className="flex space-x-1 mt-2">
                                 {Array.from({ length: 5 }).map((_, i) => (
                                     <span
                                         key={i}
-                                        className={`text-lg ${i < feedback.rating ? "text-yellow-500" : "text-gray-500"
+                                        className={`text-lg ${i < feedback.rating
+                                                ? "text-yellow-500"
+                                                : "text-gray-500"
                                             }`}
                                     >
                                         ★
@@ -217,21 +211,21 @@ const RecentOrders: React.FC = () => {
                 {`
 /* Custom Scrollbar Styles */
 .custom-scrollbar::-webkit-scrollbar {
-    width: 5px; /* Width of the scrollbar */
+    width: 5px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-    background: #2d2d2d; /* Track color */
-    border-radius: 10px; /* Rounded corners for track */
+    background: #2d2d2d;
+    border-radius: 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #A7A7A7; /* Thumb color */
-    border-radius: 10px; /* Rounded corners for thumb */
+    background: #A7A7A7;
+    border-radius: 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #777; /* Thumb hover color */
+    background: #777;
 }
 `}
             </style>

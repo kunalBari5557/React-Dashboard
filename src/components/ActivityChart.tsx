@@ -11,6 +11,7 @@ import {
 } from "recharts";
 import { Target, CakeSlice, BookMinus, ChevronRight } from "lucide-react";
 
+// Define the data type for activity data
 interface ActivityData {
     day: string;
     activity: number;
@@ -21,6 +22,7 @@ const activityData: ActivityData[] = Array.from({ length: 30 }, (_, index) => ({
     activity: Math.floor(Math.random() * 1000) + 100,
 }));
 
+// Define the props type for CustomBarShape
 interface CustomBarShapeProps extends BarProps {
     x?: number;
     y?: number;
@@ -49,11 +51,11 @@ const ActivityChart: React.FC = () => {
     const [filterType, setFilterType] = useState<string>("Weekly");
 
     return (
-        <div className="flex flex-wrap lg:flex-nowrap gap-6">
-            {/* Chart Section */}
-            <div className="w-full lg:w-[72%] min-h-[300px] bg-[#202028] p-4 text-white rounded-md">
+        <div className="flex gap-6">
+            <div className="w-[72%] h-[300px] bg-[#202028] p-4 text-white">
                 <div className="flex items-center px-2 mb-4">
                     <h2 className="text-xl font-semibold flex-shrink-0">Activity</h2>
+
                     <div className="ml-auto">
                         <select
                             value={filterType}
@@ -67,7 +69,7 @@ const ActivityChart: React.FC = () => {
                     </div>
                 </div>
 
-                <ResponsiveContainer width="100%" height={300}>
+                <ResponsiveContainer width="100%" height="100%">
                     <BarChart
                         data={activityData}
                         barCategoryGap="15%"
@@ -87,9 +89,7 @@ const ActivityChart: React.FC = () => {
                 </ResponsiveContainer>
             </div>
 
-            {/* Sidebar Section */}
-            <div className="w-full lg:w-[28%] bg-[#202028] p-6 text-white rounded-md">
-                {/* Goal */}
+            <div className="w-[28%] h-[300px] bg-[#202028] p-10 text-white ml-4 rounded-md">
                 <div className="flex items-center mb-4">
                     <div className="flex justify-center items-center w-14 h-14 rounded-full bg-[#5F3237] text-[#EC6421] mr-4">
                         <Target size={35} />
@@ -100,7 +100,6 @@ const ActivityChart: React.FC = () => {
                     </div>
                 </div>
 
-                {/* Popular Dishes */}
                 <div className="flex items-center mb-4">
                     <div className="flex justify-center items-center w-14 h-14 rounded-full bg-[#293368] text-[#3B4789] mr-4">
                         <CakeSlice size={35} />
@@ -111,7 +110,6 @@ const ActivityChart: React.FC = () => {
                     </div>
                 </div>
 
-                {/* Menus */}
                 <div className="flex items-center mb-4">
                     <div className="flex justify-center items-center w-14 h-14 rounded-full bg-[#248DBE] text-[#224A63] mr-4">
                         <BookMinus size={35} />

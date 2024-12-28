@@ -13,6 +13,7 @@ import {
   Wallet,
   Lock,
   Power,
+  LayoutDashboard,
 } from "lucide-react";
 import SquareComponent from "./components/Square";
 
@@ -33,93 +34,132 @@ const App: React.FC = () => {
   };
 
   return (
-    <>
-      {/* Fixed Header */}
-      <Header />
-      <div className="flex h-[calc(100vh-64px)]">
-        {/* Collapsed Sidebar */}
-        <div className="w-16 bg-[#202028] text-white flex flex-col items-center py-4">
-          {/* Top Icons */}
-          <div className="flex flex-col space-y-4 flex-grow">
-            <div
-              className="relative cursor-pointer p-2"
-              onClick={() => handleTabClick("/")}
-            >
-              {activeTab === "/" && (
-                <div className="absolute -left-[3px] top-1/2 -translate-y-1/2 h-8 w-1 bg-blue-500 rounded"></div>
-              )}
-              <Home size={20} className={`${activeTab === "/" ? "text-blue-500" : "text-white"}`} />
-            </div>
-            <div
-              className="relative cursor-pointer p-2"
-              onClick={() => handleTabClick("/dashboard")}
-            >
-              {activeTab === "/dashboard" && (
-                <div className="absolute -left-[3px] top-1/2 -translate-y-1/2 h-8 w-1 bg-blue-500 rounded"></div>
-              )}
-              <ChartColumnIncreasing
-                size={20}
-                className={`${activeTab === "/dashboard" ? "text-blue-500" : "text-white"}`}
-              />
-            </div>
-            <div
-              className="relative cursor-pointer p-2"
-              onClick={() => handleTabClick("/notes")}
-            >
-              {activeTab === "/notes" && (
-                <div className="absolute -left-[3px] top-1/2 -translate-y-1/2 h-8 w-1 bg-blue-500 rounded"></div>
-              )}
-              <FileCheck size={20} className={`${activeTab === "/notes" ? "text-blue-500" : "text-white"}`} />
-            </div>
-            <div
-              className="relative cursor-pointer p-2"
-              onClick={() => handleTabClick("/layers")}
-            >
-              {activeTab === "/layers" && (
-                <div className="absolute -left-[3px] top-1/2 -translate-y-1/2 h-8 w-1 bg-blue-500 rounded"></div>
-              )}
-              <Wallet size={20} className={`${activeTab === "/layers" ? "text-blue-500" : "text-white"}`} />
-            </div>
-            <div
-              className="relative cursor-pointer p-2"
-              onClick={() => handleTabClick("/flag")}
-            >
-              {activeTab === "/flag" && (
-                <div className="absolute -left-[3px] top-1/2 -translate-y-1/2 h-8 w-1 bg-blue-500 rounded"></div>
-              )}
-              <Lock size={20} className={`${activeTab === "/flag" ? "text-blue-500" : "text-white"}`} />
-            </div>
-          </div>
-          {/* Spacer */}
-          <div className="flex-grow"></div>
-          {/* Bottom Power Icon */}
+    <div className="flex h-screen">
+      {/* Sidebar (Fixed) */}
+      <div className="w-16 bg-[#202028] text-white flex flex-col items-center py-4 fixed h-full">
+        {/* Menu Icons */}
+        <div className="flex flex-col space-y-4 flex-grow">
+          {/* Home */}
           <div
             className="relative cursor-pointer p-2"
-            onClick={() => handleTabClick("/logout")}
+            onClick={() => handleTabClick("/")}
           >
-            {activeTab === "/logout" && (
+            <button className="p-0 bg-gray-800">
+              <LayoutDashboard size={28} color="#7194FF" />
+            </button>
+          </div>
+          <div
+            className="relative cursor-pointer p-2"
+            onClick={() => handleTabClick("/")}
+          >
+            {activeTab === "/" && (
               <div className="absolute -left-[3px] top-1/2 -translate-y-1/2 h-8 w-1 bg-blue-500 rounded"></div>
             )}
-            <Power size={20} className={`${activeTab === "/logout" ? "text-blue-500" : "text-white"}`} />
+            <Home
+              size={20}
+              className={`${activeTab === "/" ? "text-blue-500" : "text-white"}`}
+            />
+          </div>
+          {/* Dashboard */}
+          <div
+            className="relative cursor-pointer p-2"
+            onClick={() => handleTabClick("/dashboard")}
+          >
+            {activeTab === "/dashboard" && (
+              <div className="absolute -left-[3px] top-1/2 -translate-y-1/2 h-8 w-1 bg-blue-500 rounded"></div>
+            )}
+            <ChartColumnIncreasing
+              size={20}
+              className={`${activeTab === "/dashboard" ? "text-blue-500" : "text-white"
+                }`}
+            />
+          </div>
+          {/* Notes */}
+          <div
+            className="relative cursor-pointer p-2"
+            onClick={() => handleTabClick("/notes")}
+          >
+            {activeTab === "/notes" && (
+              <div className="absolute -left-[3px] top-1/2 -translate-y-1/2 h-8 w-1 bg-blue-500 rounded"></div>
+            )}
+            <FileCheck
+              size={20}
+              className={`${activeTab === "/notes" ? "text-blue-500" : "text-white"
+                }`}
+            />
+          </div>
+          {/* Layers */}
+          <div
+            className="relative cursor-pointer p-2"
+            onClick={() => handleTabClick("/layers")}
+          >
+            {activeTab === "/layers" && (
+              <div className="absolute -left-[3px] top-1/2 -translate-y-1/2 h-8 w-1 bg-blue-500 rounded"></div>
+            )}
+            <Wallet
+              size={20}
+              className={`${activeTab === "/layers" ? "text-blue-500" : "text-white"
+                }`}
+            />
+          </div>
+          {/* Flag */}
+          <div
+            className="relative cursor-pointer p-2"
+            onClick={() => handleTabClick("/flag")}
+          >
+            {activeTab === "/flag" && (
+              <div className="absolute -left-[3px] top-1/2 -translate-y-1/2 h-8 w-1 bg-blue-500 rounded"></div>
+            )}
+            <Lock
+              size={20}
+              className={`${activeTab === "/flag" ? "text-blue-500" : "text-white"
+                }`}
+            />
           </div>
         </div>
+        {/* Power Icon */}
+        <div
+          className="relative cursor-pointer p-2"
+          onClick={() => handleTabClick("/logout")}
+        >
+          {activeTab === "/logout" && (
+            <div className="absolute -left-[3px] top-1/2 -translate-y-1/2 h-8 w-1 bg-blue-500 rounded"></div>
+          )}
+          <Power
+            size={20}
+            className={`${activeTab === "/logout" ? "text-blue-500" : "text-white"
+              }`}
+          />
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="ml-16 flex-1 flex flex-col">
+        {/* Header (Fixed) */}
+        <Header />
 
         {/* Scrollable Content */}
-        <div
-          className="flex-1 overflow-y-auto p-4"
-          style={{
-            height: "calc(100vh - 64px)", // Match height minus header
-            scrollbarWidth: "none", // Hide scrollbar for Firefox
-            msOverflowStyle: "none", // Hide scrollbar for IE/Edge
-          }}
-        >
+        <div className="flex-1 overflow-y-auto bg-[#121212] p-4 scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800">
           <style>
             {`
-            /* Hide scrollbar for WebKit browsers (Chrome, Safari) */
-            .flex-1::-webkit-scrollbar {
-              display: none;
-            }
-            `}
+          /* For WebKit Browsers (Chrome, Safari) */
+          .scrollbar-thin::-webkit-scrollbar {
+            width: 6px;
+          }
+          .scrollbar-thin::-webkit-scrollbar-thumb {
+            background-color: #4b5563; /* Gray 600 */
+            border-radius: 10px;
+          }
+          .scrollbar-thin::-webkit-scrollbar-track {
+            background-color: #1f2937; /* Gray 800 */
+          }
+
+          /* For Firefox */
+          .scrollbar-thin {
+            scrollbar-width: thin;
+            scrollbar-color: #4b5563 #1f2937;
+          }
+        `}
           </style>
           <Routes>
             <Route path="/" element={<SquareComponent />} />
@@ -131,7 +171,8 @@ const App: React.FC = () => {
           </Routes>
         </div>
       </div>
-    </>
+    </div>
+
   );
 };
 

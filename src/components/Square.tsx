@@ -63,37 +63,40 @@ const data: DataItem[] = [
 
 const NetProfitChart: React.FC<{ value: number }> = ({ value }) => {
     return (
-        <>
+        <div
+            className="flex flex-col items-center"
+            style={{ width: "150px", height: "120px", overflow: "hidden" }}
+        >
             <div
-                className="flex flex-col items-center"
-                style={{ width: "150px", height: "120px", overflow: "hidden" }}
+                style={{
+                    transformOrigin: "center",
+                    width: "80%",
+                    height: "50%",
+                    marginBottom: "10px",
+                }}
             >
-                <div
-                    style={{
-                        transformOrigin: "center",
-                        width: "80%",
-                        height: "50%",
-                        marginBottom: "10px",
-                    }}
-                >
-                    <CircularProgressbar
-                        value={value}
-                        text={`${value}%`}
-                        styles={buildStyles({
-                            textColor: "#FFFFFF",
-                            pathColor: "#7194FE",
-                            trailColor: "#282F5C",
-                            textSize: "16px",
-                        })}
-                    />
-                </div>
+                <CircularProgressbar
+                    value={value}
+                    text={`${value}%`}
+                    styles={buildStyles({
+                        textColor: "#FFFFFF",
+                        pathColor: "#7194FE",
+                        trailColor: "#293366",
+                        textSize: "16px",
+                    })}
+                />
             </div>
-            <span className="text-xs text-gray-400 mt-2">
-                *Today average.
-            </span>
-        </>
+            <style>
+                {`
+                    .CircularProgressbar-text {
+                        font-weight: bold; /* Make the text bold */
+                    }
+                `}
+            </style>
+        </div>
     );
 };
+
 
 const SquareComponent: React.FC = () => {
     return (
@@ -117,9 +120,10 @@ const SquareComponent: React.FC = () => {
                                 const isPositive = growthPercent >= 0;
                                 const valueColor = isPositive ? "#00C78B" : "#F35E5F";
                                 const iconArrow = isPositive ? (
-                                    <ChevronUp size={16} color={valueColor} />
+                                    // <ChevronUp size={16} color={valueColor} />
+                                    <p className="text-sm mt-1 text-[#00C78B] font-semibold">▲</p>
                                 ) : (
-                                    <ChevronDown size={16} color={valueColor} />
+                                    <p className="text-sm mt-1 text-[#F35E5F] font-semibold">▼</p>
                                 );
 
                                 return (

@@ -2,7 +2,7 @@ import React from "react";
 import { Mail, Settings, Bell, Search } from "lucide-react";
 import profile from "../assets/img1.webp";
 
-const Header: React.FC<{ children?: React.ReactNode }> = () => {
+const Header: React.FC = () => {
     return (
         <header className="w-full bg-[#202028] shadow-sm border-b border-gray-700">
             <div className="flex items-center justify-between p-4 flex-wrap">

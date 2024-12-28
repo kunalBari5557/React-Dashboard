@@ -27,7 +27,6 @@ const App: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<string>(location.pathname);
-  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true); // Toggle for sidebar
 
   const handleTabClick = (route: string): void => {
     setActiveTab(route);
@@ -35,12 +34,9 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="flex h-screen overflow-hidden">
-      {/* Sidebar */}
-      <div
-        className={`${isSidebarOpen ? "w-16" : "w-0"
-          } bg-[#202028] text-white flex flex-col items-center py-4 fixed h-full transition-all duration-300`}
-      >
+    <div className="flex h-screen">
+      {/* Sidebar (Fixed) */}
+      <div className="w-16 bg-[#202028] text-white flex flex-col items-center py-4 fixed h-full">
         {/* Menu Icons */}
         <div className="flex flex-col space-y-4 flex-grow">
           {/* Home */}
@@ -138,22 +134,12 @@ const App: React.FC = () => {
       </div>
 
       {/* Main Content */}
-      <div
-        className={`${isSidebarOpen ? "ml-16" : "ml-0"
-          } flex-1 flex flex-col transition-all duration-300`}
-      >
-        {/* Header */}
-        <Header>
-          <button
-            className="md:hidden text-white"
-            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-          >
-            {isSidebarOpen ? "Close Sidebar" : "Open Sidebar"}
-          </button>
-        </Header>
+      <div className="flex flex-1 flex-col ml-16">
+        {/* Header (Fixed) */}
+        <Header />
 
         {/* Scrollable Content */}
-        <div className="flex-1 overflow-y-auto bg-[#121212] p-4">
+        <div className="flex-1 overflow-y-auto bg-[#121212] p-4 scrollbar-thin">
           <Routes>
             <Route path="/" element={<SquareComponent />} />
             <Route path="/dashboard" element={<HomeComponent />} />
@@ -164,7 +150,9 @@ const App: React.FC = () => {
           </Routes>
         </div>
       </div>
+
     </div>
+
   );
 };
 

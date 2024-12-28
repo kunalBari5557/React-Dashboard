@@ -116,7 +116,6 @@ const SquareComponent: React.FC = () => {
                                 growthPercent,
                             }) => {
                                 const isPositive = growthPercent >= 0;
-                                const valueColor = isPositive ? "#00C78B" : "#F35E5F";
                                 const iconArrow = isPositive ? (
                                     // <ChevronUp size={16} color={valueColor} />
                                     <p className="text-sm mt-1 text-[#00C78B] font-semibold">▲</p>

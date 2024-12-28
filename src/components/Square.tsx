@@ -4,8 +4,6 @@ import {
     ShoppingBasket,
     DollarSign,
     CopyX,
-    ChevronDown,
-    ChevronUp,
 } from "lucide-react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";

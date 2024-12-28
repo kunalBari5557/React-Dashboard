@@ -65,8 +65,8 @@ export function SidebarItem({
     return (
         <li
             className={`relative flex items-center py-2 px-3 my-1 font-medium rounded-md cursor-pointer transition-all group ${active
-                    ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800"
-                    : "hover:bg-indigo-50 text-gray-400"
+                ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800"
+                : "hover:bg-indigo-50 text-gray-400"
                 }`}
         >
             {/* Icon */}

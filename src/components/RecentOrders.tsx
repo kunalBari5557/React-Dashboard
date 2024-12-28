@@ -144,15 +144,18 @@ const RecentOrders: React.FC = () => {
                                     <td className="px-6 py-6 flex justify-center">
                                         <span
                                             className={`px-3 py-1 rounded-full text-sm font-bold w-[120px] text-center ${order.status === "Delivered"
-                                                    ? "text-[#0D926C] bg-[#175246]"
-                                                    : order.status === "Pending"
-                                                        ? "text-[#8B4240] bg-[#5D343A]"
+                                                ? "text-[#0D926C] bg-[#175246]"
+                                                : order.status === "Pending"
+                                                    ? "text-[#8B4240] bg-[#5D343A]"
+                                                    : order.status === "Cancelled"
+                                                        ? "text-[#923C39] bg-[#5A2323]"
                                                         : "text-red-600 bg-red-100"
                                                 }`}
                                         >
                                             {order.status}
                                         </span>
                                     </td>
+
                                 </tr>
                             ))}
                         </tbody>
@@ -194,8 +197,8 @@ const RecentOrders: React.FC = () => {
                                     <span
                                         key={i}
                                         className={`text-lg ${i < feedback.rating
-                                                ? "text-yellow-500"
-                                                : "text-gray-500"
+                                            ? "text-yellow-500"
+                                            : "text-gray-500"
                                             }`}
                                     >
                                         ★

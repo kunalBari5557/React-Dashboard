@@ -1,5 +1,5 @@
 import React from "react";
-import { Mail, Settings, Bell, Search, LayoutDashboard } from "lucide-react";
+import { Mail, Settings, Bell, Search } from "lucide-react";
 import profile from "../assets/img1.webp";
 
 const Header: React.FC = () => {
@@ -8,12 +8,6 @@ const Header: React.FC = () => {
             <div className="flex items-center justify-between p-4 flex-wrap">
                 {/* Left Section */}
                 <div className="flex items-center space-x-4 flex-wrap w-full lg:w-auto">
-                    {/* Dashboard Button */}
-                    {/* <button className="p-2 rounded-lg bg-gray-800 hover:bg-gray-700">
-                        <LayoutDashboard size={20} color="#7194FF" />
-                    </button> */}
-
-                    {/* Search Bar */}
                     <div className="relative flex-1 lg:flex-none w-full lg:w-auto mt-2 lg:mt-0">
                         <input
                             type="text"

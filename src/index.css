@@ -7,14 +7,3 @@
     background-color: #141416;
   }
 }
-
-/* Custom scrollbar styles */
-.scrollbar-thin {
-  scrollbar-width: thin;
-  /* For Firefox */
-}
-
-.scrollbar-thumb-gray-600::-webkit-scrollbar-thumb {
-  background-color: #4b5563;
-  /* For WebKit browsers */
-}

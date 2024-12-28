@@ -139,28 +139,7 @@ const App: React.FC = () => {
         <Header />
 
         {/* Scrollable Content */}
-        <div className="flex-1 overflow-y-auto bg-[#121212] p-4 scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800">
-          <style>
-            {`
-          /* For WebKit Browsers (Chrome, Safari) */
-          .scrollbar-thin::-webkit-scrollbar {
-            width: 6px;
-          }
-          .scrollbar-thin::-webkit-scrollbar-thumb {
-            background-color: #4b5563; /* Gray 600 */
-            border-radius: 10px;
-          }
-          .scrollbar-thin::-webkit-scrollbar-track {
-            background-color: #1f2937; /* Gray 800 */
-          }
-
-          /* For Firefox */
-          .scrollbar-thin {
-            scrollbar-width: thin;
-            scrollbar-color: #4b5563 #1f2937;
-          }
-        `}
-          </style>
+        <div className="flex-1 overflow-y-auto bg-[#121212] p-4 scrollbar-thin app-scrollable-content">
           <Routes>
             <Route path="/" element={<SquareComponent />} />
             <Route path="/dashboard" element={<HomeComponent />} />
